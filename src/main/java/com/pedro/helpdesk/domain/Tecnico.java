@@ -18,8 +18,8 @@ public class Tecnico extends Pessoa {
 		return chamados;
 	}
 
-	public void setChamados(List<Chamado> chamados) {
-		this.chamados = chamados;
+	public void setChamados(List<Chamado> chamado) {
+		this.chamados = chamado;
 	}
 	
 	

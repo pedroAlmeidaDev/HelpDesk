@@ -1,20 +1,46 @@
 package com.pedro.helpdesk.domain;
 
+import java.io.Serializable;
 import java.time.LocalDate;
 import java.util.HashSet;
 import java.util.Objects;
 import java.util.Set;
 import java.util.stream.Collectors;
 
+import javax.persistence.CollectionTable;
+import javax.persistence.Column;
+import javax.persistence.ElementCollection;
+import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+
+import org.hibernate.annotations.CollectionId;
+
+import com.fasterxml.jackson.annotation.JsonFormat;
 import com.pedro.helpdesk.Perfil;
 
-public abstract class Pessoa {
+@Entity //Indica que a classe vai ser a tabela
+public abstract class Pessoa implements Serializable {
+	public static final long serialVersionUID = 1L;
+	
+	@Id //gera a chave primaria
+	@GeneratedValue(strategy = GenerationType.IDENTITY) // Auto Increment
 	protected Integer id;
 	protected String nome;
+	
+	@Column(unique = true)  // valores unicos
 	protected String cpf;
+	@Column(unique = true)
 	protected String email;
 	protected String senha;
+	
+	@ElementCollection( fetch = FetchType.EAGER) // garante que a lista de perfis venha junto ao usuario
+	@CollectionTable(name = "PERFIS") // Cria a tabela PERFIS no banco de dados
 	protected Set<Integer> perfis = new HashSet<>();
+	
+	@JsonFormat(pattern = "dd/MM/yyyy")
 	protected LocalDate dataCriacao = LocalDate.now();
 	
 	public Pessoa() {
