@@ -3,7 +3,6 @@ package com.pedro.helpdesk.domain;
 import java.io.Serializable;
 import java.time.LocalDate;
 import java.util.HashSet;
-import java.util.Objects;
 import java.util.Set;
 import java.util.stream.Collectors;
 
@@ -15,8 +14,6 @@ import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-
-import org.hibernate.annotations.CollectionId;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.pedro.helpdesk.Perfil;
