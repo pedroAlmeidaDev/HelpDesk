@@ -11,6 +11,7 @@ import com.pedro.helpdesk.Perfil;
 
 @Entity //Indica que a classe vai ser a tabela
 public class Tecnico extends Pessoa {
+
 	
 	public static final long serialVersionUID = 1L;
 	
@@ -26,6 +27,7 @@ public class Tecnico extends Pessoa {
 	public Tecnico(Integer id, String nome, String cpf, String email, String senha) {
 		super(id, nome, cpf, email, senha);
 	}
+
 
 	public List<Chamado> getChamados() {
 		return chamados;
