@@ -9,13 +9,13 @@ import javax.persistence.OneToMany;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.pedro.helpdesk.Perfil;
 
-@Entity
+@Entity //Indica que a classe vai ser a tabela
 public class Tecnico extends Pessoa {
 	
 	public static final long serialVersionUID = 1L;
 	
-	@JsonIgnore
-	@OneToMany(mappedBy = "tecnico")
+	@JsonIgnore // Evita a serialização
+	@OneToMany(mappedBy = "tecnico") // Um para muitos
 	private List<Chamado> chamados = new ArrayList<>();
 
 	public Tecnico() {

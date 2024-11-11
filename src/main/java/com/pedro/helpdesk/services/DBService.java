@@ -16,16 +16,16 @@ import com.pedro.helpdesk.repositories.ClienteRepository;
 import com.pedro.helpdesk.repositories.PessoaRepository;
 import com.pedro.helpdesk.repositories.TecnicoRepository;
 
-@Service
+@Service // Específica para classes de serviço, facilitando a leitura do código.
 public class DBService {
 
-	@Autowired
+	@Autowired // Injeção automática de dependência
 	private TecnicoRepository tecnicoRepository;
-	@Autowired
+	@Autowired // Injeção automática de dependência
 	private ClienteRepository clienteRepository;
-	@Autowired
+	@Autowired // Injeção automática de dependência
 	private ChamadoRepository chamadoRepository;
-	@Autowired
+	@Autowired // Injeção automática de dependência
 	private PessoaRepository pessoaRepository;
 
 	public void instanciaDB() {

@@ -29,7 +29,7 @@ public abstract class Pessoa implements Serializable {
 	
 	@Column(unique = true)  // valores unicos
 	protected String cpf;
-	@Column(unique = true)
+	@Column(unique = true)  // valores unicos
 	protected String email;
 	protected String senha;
 	
@@ -37,7 +37,7 @@ public abstract class Pessoa implements Serializable {
 	@CollectionTable(name = "PERFIS") // Cria a tabela PERFIS no banco de dados
 	protected Set<Integer> perfis = new HashSet<>();
 	
-	@JsonFormat(pattern = "dd/MM/yyyy")
+	@JsonFormat(pattern = "dd/MM/yyyy") // permite definir o formato de saída para campos específicos durante a serialização
 	protected LocalDate dataCriacao = LocalDate.now();
 	
 	public Pessoa() {

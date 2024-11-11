@@ -14,17 +14,17 @@ import com.fasterxml.jackson.annotation.JsonFormat;
 import com.pedro.helpdesk.Prioridade;
 import com.pedro.helpdesk.Status;
 
-@Entity
+@Entity //Indica que a classe vai ser a tabela
 public class Chamado implements Serializable {
 	
 	public static final long serialVersionUID = 1L;
 	
-	@Id
+	@Id //gera a chave primaria
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
-	@JsonFormat(pattern = "dd/MM/yyyy")
+	@JsonFormat(pattern = "dd/MM/yyyy") // permite definir o formato de saída para campos específicos durante a serialização
 	private LocalDate dataAbertura = LocalDate.now();
-	@JsonFormat(pattern = "dd/MM/yyyy")
+	@JsonFormat(pattern = "dd/MM/yyyy") // permite definir o formato de saída para campos específicos durante a serialização
 	private LocalDate dataFechamento;
 	private Prioridade prioridade;
 	private Status status;
@@ -32,10 +32,10 @@ public class Chamado implements Serializable {
 	private String observacao;
 	
 	
-	@ManyToOne
+	@ManyToOne // Muitos para um
 	@JoinColumn(name = "tecnico_id")
 	private Tecnico tecnico;
-	@ManyToOne
+	@ManyToOne // Muitos para um
 	@JoinColumn(name = "cliente_id")
 	private Cliente cliente;
 	
