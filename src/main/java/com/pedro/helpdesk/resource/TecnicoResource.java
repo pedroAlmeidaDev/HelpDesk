@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.pedro.helpdesk.domain.Tecnico;
+import com.pedro.helpdesk.dtos.TecnicoDTO;
 import com.pedro.helpdesk.services.TecnicoService;
 
 @RestController // Indica que a classe é um controlador e que os métodos nela retornarão dados JSON/XML
@@ -19,9 +20,9 @@ public class TecnicoResource {
 	TecnicoService service;
 	
 	@GetMapping(value = "/{id}") // É uma anotação especializada, introduzida para simplificar o uso do @RequestMapping em métodos HTTP GET
-	public ResponseEntity<Tecnico> findById(@PathVariable Integer id){ // Captura valores dinâmicos da URL para uso no método.
+	public ResponseEntity<TecnicoDTO> findById(@PathVariable Integer id){ // Captura valores dinâmicos da URL para uso no método.
 		Tecnico obj = service.findById(id);
-		return ResponseEntity.ok().body(obj);
+		return ResponseEntity.ok().body(new TecnicoDTO(obj));
 	}
 
 }
