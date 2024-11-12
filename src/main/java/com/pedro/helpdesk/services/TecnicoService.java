@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 
 import com.pedro.helpdesk.domain.Tecnico;
 import com.pedro.helpdesk.repositories.TecnicoRepository;
+import com.pedro.helpdesk.services.exceptions.ObjectnotFoundException;
 
 @Service // Específica para classes de serviço, facilitando a leitura do código.
 public class TecnicoService {
@@ -16,6 +17,6 @@ public class TecnicoService {
 	
 	public Tecnico findById(Integer id) {
 		Optional<Tecnico> obj = repository.findById(id);
-		return obj.orElse(null);
+		return obj.orElseThrow(() -> new ObjectnotFoundException("Objeto não encontrado" + id));
 	}
 }
