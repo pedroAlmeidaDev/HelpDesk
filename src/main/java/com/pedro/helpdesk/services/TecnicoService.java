@@ -17,6 +17,6 @@ public class TecnicoService {
 	
 	public Tecnico findById(Integer id) {
 		Optional<Tecnico> obj = repository.findById(id);
-		return obj.orElseThrow(() -> new ObjectnotFoundException("Objeto não encontrado" + id));
+		return obj.orElseThrow(() -> new ObjectnotFoundException("Objeto não encontrado! " + " id:" + id));
 	}
 }
