@@ -4,9 +4,11 @@ import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.repository.support.Repositories;
 import org.springframework.stereotype.Service;
 
 import com.pedro.helpdesk.domain.Tecnico;
+import com.pedro.helpdesk.dtos.TecnicoDTO;
 import com.pedro.helpdesk.repositories.TecnicoRepository;
 import com.pedro.helpdesk.services.exceptions.ObjectnotFoundException;
 
@@ -24,5 +26,11 @@ public class TecnicoService {
 	public List<Tecnico> findAll() {
 		// TODO Auto-generated method stub
 		return repository.findAll();
+	}
+
+	public Tecnico create(TecnicoDTO objDTO) {
+		objDTO.setId(null);
+		Tecnico newObj = new Tecnico(objDTO);		
+		return repository.save(newObj);
 	}
 }
