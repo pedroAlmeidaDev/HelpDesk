@@ -15,6 +15,8 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
+import org.hibernate.validator.constraints.br.CPF;
+
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.pedro.helpdesk.Perfil;
 
@@ -28,6 +30,8 @@ public abstract class Pessoa implements Serializable {
 	protected String nome;
 	
 	@Column(unique = true)  // valores unicos
+	
+	@CPF
 	protected String cpf;
 	@Column(unique = true)  // valores unicos
 	protected String email;
