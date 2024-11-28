@@ -22,19 +22,15 @@ import com.pedro.helpdesk.domain.Tecnico;
 import com.pedro.helpdesk.dtos.TecnicoDTO;
 import com.pedro.helpdesk.services.TecnicoService;
 
-@RestController // Indica que a classe é um controlador e que os métodos nela retornarão dados
-				// JSON/XML
-@RequestMapping(value = "/tecnicos") // É uma anotação mais geral para mapear URLs para métodos ou classes de um
-										// controlador
+@RestController
+@RequestMapping(value = "/tecnicos") 
 public class TecnicoResource {
 
-	@Autowired // Injeção automática de dependência
+	@Autowired
 	TecnicoService service;
 
-	@GetMapping(value = "/{id}") // É uma anotação especializada, introduzida para simplificar o uso do
-									// @RequestMapping em métodos HTTP GET
-	public ResponseEntity<TecnicoDTO> findById(@PathVariable Integer id) { // Captura valores dinâmicos da URL para uso
-																			// no método.
+	@GetMapping(value = "/{id}") 
+	public ResponseEntity<TecnicoDTO> findById(@PathVariable Integer id) {
 		Tecnico obj = service.findById(id);
 		return ResponseEntity.ok().body(new TecnicoDTO(obj));
 	}

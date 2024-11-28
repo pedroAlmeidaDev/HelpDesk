@@ -22,19 +22,15 @@ import com.pedro.helpdesk.domain.Cliente;
 import com.pedro.helpdesk.dtos.ClienteDTO;
 import com.pedro.helpdesk.services.ClienteService;
 
-@RestController // Indica que a classe é um controlador e que os métodos nela retornarão dados
-				// JSON/XML
-@RequestMapping(value = "/tecnicos") // É uma anotação mais geral para mapear URLs para métodos ou classes de um
-										// controlador
+@RestController
+@RequestMapping(value = "/clientes")
 public class ClienteResource {
 
 	@Autowired // Injeção automática de dependência
 	ClienteService service;
 
-	@GetMapping(value = "/{id}") // É uma anotação especializada, introduzida para simplificar o uso do
-									// @RequestMapping em métodos HTTP GET
-	public ResponseEntity<ClienteDTO> findById(@PathVariable Integer id) { // Captura valores dinâmicos da URL para uso
-																			// no método.
+	@GetMapping(value = "/{id}") 
+	public ResponseEntity<ClienteDTO> findById(@PathVariable Integer id) {
 		Cliente obj = service.findById(id);
 		return ResponseEntity.ok().body(new ClienteDTO(obj));
 	}
