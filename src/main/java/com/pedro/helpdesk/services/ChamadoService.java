@@ -56,7 +56,7 @@ public class ChamadoService {
 		chamado.setStatus(Status.ToEnum(obj.getStatus()));
 		chamado.setTitulo(obj.getTitulo());
 		chamado.setObservacao(obj.getObservacao());
-		return chamado
+		return chamado;
 		
 	}
 
