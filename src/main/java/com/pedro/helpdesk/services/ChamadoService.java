@@ -8,6 +8,7 @@ import javax.validation.Valid;
 
 import org.apache.catalina.startup.ClassLoaderFactory.Repository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import com.pedro.helpdesk.Prioridade;
@@ -28,6 +29,7 @@ public class ChamadoService {
 	private TecnicoService tecnicoService;
 	@Autowired
 	private ClienteService clienteService;
+	
 
 	public Chamado findById(Integer id) {
 		Optional<Chamado> obj = repository.findById(id);
